@@ -5,9 +5,22 @@
   <meta charset="utf-8">
 </head>
 <body>
-  <div>
-    <h1>Stimulus CDN</h1>
-    <input type="text">
+  <h1>Stimulus CDN</h1>
+  <div data-controller="hello">
+    <input data-hello-target="name" type="text">
   </div>
+
+  <script type="module">
+    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+    window.Stimulus = Application.start()
+
+    Stimulus.register("hello", class extends Controller {
+      static targets = ["name"]
+
+      connect() {
+        alert("HelloController connected")
+      }
+    })
+  </script>
 </body>
 </html>
